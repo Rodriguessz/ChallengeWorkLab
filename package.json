@@ -4,7 +4,7 @@
   "description": "Projeto CRUD para o challenge da empresa Worklab",
   "main": "index.js",
   "scripts": {
-    "test": "npx nodemon index"
+    "start": "npx nodemon index"
   },
   "author": "Enzo Rodrigues",
   "license": "ISC",

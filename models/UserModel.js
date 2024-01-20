@@ -13,11 +13,8 @@ const createTable = async () =>{
           `
                 CREATE TABLE IF NOT EXISTS pacientes (
                 id_paciente INT AUTO_INCREMENT PRIMARY KEY,
-                nome_paciente VARCHAR(255) NOT NULL,
-                numero_atendimento VARCHAR(20) UNIQUE,
-                sexo_paciente VARCHAR(10) NOT NULL,
-                email_paciente VARCHAR(255) NOT NULL UNIQUE,
-                celular_paciente VARCHAR(20) NOT NULL
+                nome_paciente VARCHAR(255) NOT NULL
+                
             )
         `
         )
@@ -31,8 +28,41 @@ createTable()
 
 
 
+//Inserir dados no BD
+
+const inserirDados = async (user) =>{
+    
+    try{
+        const values = [user.name]
+        const connection = await db.connectionToDb();
+        await connection.query('INSERT INTO pacientes (nome_paciente) VALUES (?)', values); 
+        
+    }catch(error){
+        console.error('Erro ao inserir dados no banco de dados:', error.message);
+        throw new Error('Erro ao inserir dados no banco de dados.');
+    }
+    
+}
+
+
+const listarDados = async () =>{
+    const connection = await db.connectionToDb()
+
+    try{
+        const result = await connection.query("SELECT * FROM pacientes");
+        console.log("Listagem realizada com sucesso!")
+        return result[0]
+    }catch(error){
+        console.log(`Não foi listar os dados: ${error.message}`)
+    }
+}
+
+
+
 
 module.exports = {
    
+    inserirDados,
+    listarDados,
     
 }

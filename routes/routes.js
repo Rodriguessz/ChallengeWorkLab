@@ -10,6 +10,10 @@ const userController = require("../controller/UserController")
 
 routes.get("/", userController.userLogin)
 
+routes.post("/", userController.insertUser)
+
+routes.get("/list", userController.listUser)
+
 
 //Exportando meu módulo de rotas
 

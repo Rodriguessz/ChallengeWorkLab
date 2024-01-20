@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worlab - Dev Challenge</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="./main.js" defer></script>
+
+    
+</head>
+<body>
+    <div id="page">
+
+
+        <aside class="left-menu"> 
+
+            <h2>CRUD WORKLAB</h2>
+    
+    
+            <figure class="user-image">
+    
+                <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Foto do usuário">
+                <figcaption id="userName">Enzo Rodrigues </figcaption>
+
+                <p>Admin</p>
+    
+            </figure>
+    
+    
+            <nav>
+                <ul>
+                    <a href="">
+                        <li>
+                            <img src="svg/Vector.svg" alt="ícone">
+                            Home
+                        </li>
+                    </a>
+                    
+                    <a href="./cadastraUser.html">
+                        <li style="--delay:0.4s">
+                            <img src="svg/Vector.svg" alt="ícone">
+                            Cadastrar usuário
+                        </li>
+                    </a>
+                    
+                    <a href="">
+                        <li style="--delay:0.6s">
+                            <img src="svg/Vector.svg" alt="ícone">
+                            Cadastrar Exame
+                        
+                        </li>
+                    </a>
+                    
+                    <a href="">
+                        <li style="--delay:0.8s">
+                            <img src="svg/Vector.svg" alt="ícone
+                            ">
+                            Exibir relatório
+                        </li>
+                    </a>
+                   
+
+                    <a href="
+                    /"><li style="--delay:1s">
+                        
+                        Log out
+ 
+                         <img src="svg/Vector.svg" alt="ícone
+                         ">
+                     </li></a>
+                    
+    
+                </ul>
+
+                
+    
+            </nav>
+    
+        </aside>
+    
+        
+
+
+        <div class="main-content">
+
+
+            <section class="search-menu">
+
+
+                <img src="/svg/caret-circle-down 1.svg" alt="icone de uma seta">
+    
+    
+                <div class="search-input">
+    
+                    <label for="search">Search</label>
+                    <input type="text" name="search" id="search" placeholder="Search">
+    
+                    <img src="/svg/bell.svg" alt="Icone de sininho">
+    
+                </div>
+    
+               
+    
+    
+            </section>
+    
+    
+            <section class="home">
+    
+            </section>
+    
+    
+            <section class="user-form">
+    
+                <div class="title-user-form">
+                    <h2>Lista de usuários</h2>
+
+                    <a href="/">
+                        <button id="addUser">
+                            Add new user
+                        </button>
+    
+                    </a>
+                   
+                  
+                   
+                </div>
+
+                <div class="line">
+
+                </div>
+
+
+
+                <section class="list-users">
+
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="photo">Foto</th>
+
+                                <th>Nome</th>
+                                <th>Sexo</th>
+                                <th>Email</th>
+                                <th>Id do Atendimento</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                
+                                    <td><img class="user-image" src="https://randomuser.me/api/portraits/men/11.jpg" alt="Imagem do usuário"></td>
+                                    <td>Nome do Usuário</td>
+                                    <td>Sexo do Usuário</td>
+                                    <td>usuario@example.com</td>
+                                    <td>12345</td>
+                                    <td>
+                                        <div class="crud-icons">
+                                            <span class="edit-icon" onclick="editRow()">✏️</span>
+                                            <span class="delete-icon" onclick="deleteRow()">❌</span>
+                                        </div>
+                                        
+                                    </td>
+                                
+                                
+                            </tr>
+
+                            <tr>
+                                <td><img class="user-image" src="https://randomuser.me/api/portraits/men/11.jpg" alt="Imagem do usuário"></td>
+                                <td>Nome do Usuário</td>
+                                <td>Sexo do Usuário</td>
+                                <td>usuario@example.com</td>
+                                <td>12345</td>
+                                <td>
+                                    <div class="crud-icons">
+                                        <span class="edit-icon">✏️</span>
+                                        <span class="delete-icon">❌</span>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            <!-- Adicione mais linhas conforme necessário -->
+                        </tbody>
+                    </table>
+
+                </section>
+
+
+
+        </div>
+       
+
+
+
+
+
+    </div>
+   
+
+</body>
+</html>

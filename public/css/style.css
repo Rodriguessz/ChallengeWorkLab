@@ -1,0 +1,184 @@
+/* Global styles */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+
+    /* Preset font styles */
+
+    font-size: 62.5%;  
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+
+    /* CSS variables */
+
+    --main-bg-color:  linear-gradient(to right, #337ab7, #2983bd, #1e8bc3, #1194c8, #009ccc);
+    --main-lg-card-bg-color: #fff;
+    --main-lg-font-color: #000;
+    --main-label-color: #6C6C6C;
+    --main-inp-stroke-color: #E5E5E5;
+    --main-plcholder-color: #CDCDCD;
+    --main-bg-btn:linear-gradient(to right, #337ab7, #2983bd, #1e8bc3, #1194c8, #009ccc);
+    
+
+}
+
+
+
+/* Index Page */
+
+body{
+
+    min-height: 100vh;
+
+    font-size: 1.6rem;
+
+    background-image: var(--main-bg-color);
+}
+
+
+div#page{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+
+}
+
+
+main{
+
+    background-color: var(--main-lg-card-bg-color);
+
+    border-radius: 0.6rem;
+
+    width: min(47.5rem, 90%);
+
+    display: flex;
+    flex-direction: column;
+    
+ 
+
+    padding: 4.8rem 6.4rem 6.4rem;
+
+}
+
+main h1{
+    
+    color: var(--main-lg-font-color);
+
+    margin-bottom: 4.2rem;
+
+    text-align: center;
+}
+
+
+fieldset.login-fieldset{
+    border: none;
+}
+
+
+div.fieldset-wrapper{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    gap: 1rem;
+
+
+}
+
+div.fieldset-wrapper legend{
+    
+    font-size: 2.2rem ;
+    font-weight: 600;
+    
+
+
+}
+
+div.fieldset-wrapper p{
+    
+    font-size:1.4rem ;
+    font-weight: 400;
+
+    margin-bottom: 5rem;
+    
+
+}
+
+
+div.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+}
+div.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+div.input-wrapper label{
+
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    color: var(--main-label-color);
+}
+
+div.input-wrapper input{
+
+    border: 1px solid var(--main-inp-stroke-color);
+    padding: 1.4rem;
+
+    border-radius: 0.6rem;
+}
+
+div.input-wrapper input::placeholder{
+
+    color: var(--main-plcholder-color);
+}
+
+button#signIn{
+
+    padding: 1.6rem ;
+    width: 100%;
+
+    margin-top: 5rem;
+
+    border-radius: 0.8rem;
+    border: none;
+
+    background-image: var(--main-bg-btn);
+
+    color: var(--main-lg-card-bg-color);
+    font-weight: 500;
+
+    cursor: pointer;
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -20,6 +20,9 @@ const app = express();
 const path = require("path");
 
 
+const db = require("./database/db")
+
+
 
 
 
@@ -34,7 +37,6 @@ app.use(express.static(path.join(__dirname, "public")))
 
 //Configurando rotas
 app.use(routes);
-
 
 
 //Inicia meu servidor Express

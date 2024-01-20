@@ -1,10 +1,17 @@
 
+const db = require("../database/db")
+
+
 //Método da minha rota raiz
-const userLogin = (request, response) =>{
-    
-    return response.render("index")
+const userLogin = async (request, response) =>{
+
+    const consulta = await db.listUser()
+    return response.json(consulta)
     
 }
+
+
+
 
 //Método da minha rota home 
 

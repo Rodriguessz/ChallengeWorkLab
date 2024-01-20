@@ -6,6 +6,8 @@ const routes = require("express").Router()
 const userController = require("../controller/UserController")
 
 
+
+
 routes.get("/", userController.userLogin)
 
 routes.get("/home", userController.homeApp)

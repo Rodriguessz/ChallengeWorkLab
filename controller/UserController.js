@@ -1,21 +1,15 @@
 
-const db = require("../database/db")
-
+const db =  require("../database/db")
+const userModel = require("../models/UserModel")
 
 //Método da minha rota raiz
 const userLogin = async (request, response) =>{
 
-    const consulta = await db.listUser()
-    return response.json(consulta)
+    
+    return response.render("index")
     
 }
 
-
-
-
-//Método da minha rota home 
-
-const homeApp = (request, response) =>  response.render("home")
 
 
 
@@ -29,5 +23,6 @@ const homeApp = (request, response) =>  response.render("home")
 module.exports = {
 
     userLogin,
-    homeApp,
+    
+
 }

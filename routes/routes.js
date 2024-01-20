@@ -10,11 +10,6 @@ const userController = require("../controller/UserController")
 
 routes.get("/", userController.userLogin)
 
-routes.get("/home", userController.homeApp)
-
-
-
-
 
 //Exportando meu módulo de rotas
 

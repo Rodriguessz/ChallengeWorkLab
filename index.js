@@ -11,20 +11,15 @@ dotenv.config();
 
 const routes = require("./routes/routes");
 
-//Constantes -> 
-
-//Iniciando uma nova aplicação express
-const app = express();
-
 //Responsável pelo direcionamento das pastas
 const path = require("path");
 
 
-const db = require("./database/db")
 
+//Constantes -> 
 
-
-
+//Iniciando uma nova aplicação express
+const app = express();
 
 
 //App configuration -> 
@@ -37,6 +32,10 @@ app.use(express.static(path.join(__dirname, "public")))
 
 //Configurando rotas
 app.use(routes);
+
+
+
+
 
 
 //Inicia meu servidor Express

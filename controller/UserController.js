@@ -3,12 +3,7 @@
 const userModel = require("../models/UserModel")
 
 
-//Método da minha rota raiz
-const userLogin = async (request, response) =>{
 
-    return response.render("cadastro")
-    
-}
 
 
 const insertUser = async (request, response)=>{
@@ -21,7 +16,8 @@ const insertUser = async (request, response)=>{
     try{
     
         await userModel.inserirDados(user);
-        response.status(201).send('Usuário inserido com sucesso!.')
+        
+        return response.redirect("/")
         
 
     }catch(error){
@@ -53,7 +49,6 @@ const listUser = async (request, response) =>{
 
 module.exports = {
 
-    userLogin,
     insertUser,
     listUser,
     

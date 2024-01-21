@@ -8,7 +8,7 @@ const userController = require("../controller/UserController")
 
 
 
-routes.get("/", userController.userLogin)
+routes.get("/", userController.listUser)
 
 routes.post("/", userController.insertUser)
 

@@ -4,20 +4,26 @@ const userModel = require("../models/UserModel")
 
 
 
-
+const renderUser = async (request, response)=>{
+    try{
+        return response.render("cadastraUser")
+    }catch(error){
+        console.log(error.message)
+    }
+}
 
 const insertUser = async (request, response)=>{
     const user = request.body;
-    console.log(user)
- 
-
+   
     // return response.json({name: typeof user})
     // console.log(`O request.body aqui ${request.body}`)
     try{
-    
-        await userModel.inserirDados(user);
         
-        return response.redirect("/")
+        await userModel.inserirDados(user);
+        console.log("Usuário cadastrado com sucesso!")
+        console.log(user)
+        
+        return response.redirect("/create")
         
 
     }catch(error){
@@ -45,12 +51,11 @@ const listUser = async (request, response) =>{
 
 
 
+
 //Exportando os métodos 
 
 module.exports = {
-
+    renderUser,
     insertUser,
     listUser,
-    
-
 }

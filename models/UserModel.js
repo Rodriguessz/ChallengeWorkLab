@@ -12,8 +12,14 @@ const createTable = async () =>{
   
           `
                 CREATE TABLE IF NOT EXISTS pacientes (
-                id_paciente INT AUTO_INCREMENT PRIMARY KEY,
-                nome_paciente VARCHAR(255) NOT NULL
+                    id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+                    nome_paciente VARCHAR(255) NOT NULL,
+                    sexo_paciente VARCHAR(10),
+                    idade_paciente INT,
+                    email_paciente VARCHAR(255),
+                    exame_paciente VARCHAR(255),
+                    tel_paciente VARCHAR(255)
+
                 
             )
         `
@@ -33,9 +39,9 @@ createTable()
 const inserirDados = async (user) =>{
     
     try{
-        const values = [user.name]
+        const values = [user.name, user.sexo, user.age, user.email, user.exame, user.phone]
         const connection = await db.connectionToDb();
-        await connection.query('INSERT INTO pacientes (nome_paciente) VALUES (?)', values); 
+        await connection.query('INSERT INTO pacientes (nome_paciente, sexo_paciente, idade_paciente, email_paciente, exame_paciente,tel_paciente) VALUES (?,?,?,?,?,?)', values); 
         
     }catch(error){
         console.error('Erro ao inserir dados no banco de dados:', error.message);

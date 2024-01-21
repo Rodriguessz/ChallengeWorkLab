@@ -6,13 +6,14 @@ const routes = require("express").Router()
 const userController = require("../controller/UserController")
 
 
+routes.get("/create", userController.renderUser)
 
 
 routes.get("/", userController.listUser)
 
-routes.post("/", userController.insertUser)
+routes.post("/create", userController.insertUser)
 
-routes.get("/list", userController.listUser)
+
 
 
 //Exportando meu módulo de rotas

@@ -45,13 +45,14 @@ const inserirDados = async (user) =>{
 }
 
 
-const listarDados = async () =>{
+const listarDados = async (request, response) =>{
     const connection = await db.connectionToDb()
 
     try{
-        const result = await connection.query("SELECT * FROM pacientes");
+       const userList =  await connection.query("SELECT * FROM pacientes");
         console.log("Listagem realizada com sucesso!")
-        return result[0]
+        return userList[0]
+       
     }catch(error){
         console.log(`Não foi listar os dados: ${error.message}`)
     }

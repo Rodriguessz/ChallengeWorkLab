@@ -9,6 +9,18 @@
     <form action="/" method="post">
         <input type="text" name="name" id="name">
         <button type="submit">Enviar</button>
+
+        
     </form>
+
+    <ul>
+        <% userList.forEach((user) => { %>
+          <li><%= user.nome_paciente%></li>
+        <% }); %>
+      </ul>
+      
+      
+    
+    
 </body>
 </html>

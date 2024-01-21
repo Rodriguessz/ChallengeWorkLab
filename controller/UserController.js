@@ -33,18 +33,17 @@ const insertUser = async (request, response)=>{
 const listUser = async (request, response) =>{
     
     try{
-        const result = await userModel.listarDados();
 
-        return response.json(result)
+        const userList = await userModel.listarDados();
+        console.log(userList)
+
+        return response.render("cadastro", {userList})
         
     }catch(error){
         response.status(500).send('Erro ao listar dados!');
         throw error
     }
 }
-
-
-
 
 
 

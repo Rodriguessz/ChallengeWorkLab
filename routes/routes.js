@@ -9,7 +9,7 @@ const userController = require("../controller/UserController")
 routes.get("/create", userController.renderUser)
 
 
-routes.get("/", userController.listUser)
+routes.get("/listUsers", userController.listUser)
 
 routes.post("/create", userController.insertUser)
 

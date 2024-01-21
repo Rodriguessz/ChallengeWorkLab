@@ -119,7 +119,7 @@
                 <div class="title-user-form">
                     <h2>Lista de usuários</h2>
 
-                    <a href="/">
+                    <a href="/create">
                         <button id="addUser">
                             Add new user
                         </button>
@@ -152,38 +152,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                
+                            <% userList.forEach((user) => { %>
+                                <tr>
                                     <td><img class="user-image" src="https://randomuser.me/api/portraits/men/11.jpg" alt="Imagem do usuário"></td>
-                                    <td>Nome do Usuário</td>
-                                    <td>Sexo do Usuário</td>
-                                    <td>usuario@example.com</td>
-                                    <td>12345</td>
+                                    <td><%= user.nome_paciente %></td>
+                                    <td><%= user.sexo_paciente %></td>
+                                    <td><%= user.email_paciente %></td>
+                                    <td><%= user.numero_atendimento %></td>
                                     <td>
                                         <div class="crud-icons">
                                             <span class="edit-icon" onclick="editRow()">✏️</span>
                                             <span class="delete-icon" onclick="deleteRow()">❌</span>
                                         </div>
-                                        
                                     </td>
-                                
-                                
-                            </tr>
+                                </tr>
+                            <% }); %>
+                            
 
-                            <tr>
-                                <td><img class="user-image" src="https://randomuser.me/api/portraits/men/11.jpg" alt="Imagem do usuário"></td>
-                                <td>Nome do Usuário</td>
-                                <td>Sexo do Usuário</td>
-                                <td>usuario@example.com</td>
-                                <td>12345</td>
-                                <td>
-                                    <div class="crud-icons">
-                                        <span class="edit-icon">✏️</span>
-                                        <span class="delete-icon">❌</span>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
+                          
                             <!-- Adicione mais linhas conforme necessário -->
                         </tbody>
                     </table>

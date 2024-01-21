@@ -16,9 +16,10 @@ const createTable = async () =>{
                     nome_paciente VARCHAR(255) NOT NULL,
                     sexo_paciente VARCHAR(10),
                     idade_paciente INT,
-                    email_paciente VARCHAR(255),
-                    exame_paciente VARCHAR(255),
-                    tel_paciente VARCHAR(255)
+                    email_paciente VARCHAR(40),
+                    exame_paciente JSON,
+                    tel_paciente VARCHAR(255),
+                    numero_atendimento VARCHAR(255)
 
                 
             )
@@ -36,12 +37,21 @@ createTable()
 
 //Inserir dados no BD
 
-const inserirDados = async (user) =>{
+const inserirDados = async (user, serviceNumber) =>{
     
     try{
-        const values = [user.name, user.sexo, user.age, user.email, user.exame, user.phone]
+        const exames = [{
+            exame: user.exame
+        }, {
+            exame: user.exame2
+        }]
+
+
+    
         const connection = await db.connectionToDb();
-        await connection.query('INSERT INTO pacientes (nome_paciente, sexo_paciente, idade_paciente, email_paciente, exame_paciente,tel_paciente) VALUES (?,?,?,?,?,?)', values); 
+        const jsonExames =  JSON.stringify(exames)
+        const values = [user.name, user.sexo, user.age, user.email, jsonExames, user.phone, serviceNumber]
+        await connection.query('INSERT INTO pacientes (nome_paciente, sexo_paciente, idade_paciente, email_paciente, exame_paciente, tel_paciente, numero_atendimento) VALUES (?,?,?,?,?,?,?)', values); 
         
     }catch(error){
         console.error('Erro ao inserir dados no banco de dados:', error.message);
@@ -49,6 +59,7 @@ const inserirDados = async (user) =>{
     }
     
 }
+
 
 
 const listarDados = async (request, response) =>{
@@ -71,5 +82,7 @@ module.exports = {
    
     inserirDados,
     listarDados,
+   
     
 }
+

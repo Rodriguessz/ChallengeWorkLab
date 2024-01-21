@@ -13,17 +13,27 @@ const renderUser = async (request, response)=>{
 }
 
 const insertUser = async (request, response)=>{
-    const user = request.body;
+
    
+
+    //Infos da requisição enviada pelo body
+    const user = request.body;
     // return response.json({name: typeof user})
     // console.log(`O request.body aqui ${request.body}`)
     try{
-        
-        await userModel.inserirDados(user);
+
+        if (user.exame === user.exame2) {
+            return response.status(400).send('Os exames selecionados são iguais. Selecione exames diferentes.');
+        }
+
+
+        const serviceNumber = Math.round(Math.random() * 100000);
+        console.log(serviceNumber)
+        await userModel.inserirDados(user, serviceNumber);
         console.log("Usuário cadastrado com sucesso!")
         console.log(user)
         
-        return response.redirect("/create")
+        return response.redirect("/listUsers")
         
 
     }catch(error){
@@ -38,8 +48,9 @@ const listUser = async (request, response) =>{
 
         const userList = await userModel.listarDados();
         console.log(userList)
-
-        return response.render("cadastro", {userList})
+        
+        // return response.json(userList)
+        return response.render("listagem", {userList})
         
     }catch(error){
         response.status(500).send('Erro ao listar dados!');

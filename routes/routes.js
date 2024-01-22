@@ -7,13 +7,12 @@ const userController = require("../controller/UserController")
 
 
 routes.get("/create", userController.renderUser)
-
+routes.post("/create", userController.insertUser)
 
 routes.get("/listUsers", userController.listUser)
 
-routes.post("/create", userController.insertUser)
-
-
+routes.get("/updateUser/:id_paciente", userController.renderEditUserForm);
+routes.post("/updateUser/:id_paciente", userController.updateUser)
 
 
 //Exportando meu módulo de rotas

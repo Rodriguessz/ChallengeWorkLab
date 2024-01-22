@@ -43,7 +43,7 @@
                     <a href="/create">
                         <li style="--delay:0.4s">
                             <img src="/svg/Vector.svg" alt="ícone">
-                            Cadastrar Paciente
+                            Cadastrar paciente
                         </li>
                     </a>
                     
@@ -55,7 +55,7 @@
                         </li>
                     </a>
                     
-                    <a href="/report">
+                    <a href="/reports">
                         <li style="--delay:0.8s">
                             <img src="/svg/Vector.svg" alt="ícone
                             ">
@@ -109,15 +109,13 @@
             </section>
     
     
-            <section class="home">
-    
-            </section>
+        
     
     
             <section class="user-form">
     
                 <div class="title-user-form">
-                    <h2>Cadastro de Pacientes</h2>
+                    <h2>Atualização de Paciente</h2>
 
                  
                   
@@ -129,14 +127,14 @@
                 </div>
 
 
-
+                <% user %>
                 <section class="list-users">
 
-                    <form action="/create" method="post" id="userRegister">
+                    <form action="/updateUser/<%= user.id_paciente %>" method="post" id="userRegister">
 
                         <fieldset>
                             <div class="fieldset-wrapper">
-                                <legend>Paciente</legend>
+                                <legend>Paciente: <%= user.nome_paciente %> </legend>
                             </div>
 
                             <div class="input-wrapper">
@@ -144,33 +142,34 @@
 
                                 <div class="wrapper">
                                     <label for="name">Nome</label>
-                                    <input type="text" name="name" id="nome"/>
+                                    <input type="text" name="name" id="nome"  value="<%= user.nome_paciente %>"/>
                                 </div>
 
                                 <div class="wrapper">
                                     <label for="sexo">Sexo</label>
                                     <select name="sexo" id="">
-                                        <option value="M">M</option>
-                                        <option value="F">F</option>
+                                        <!-- Se o valor retornado do BD for M, seleciona o value=M. Se o valor for F, seleciona o value=F -->
+                                        <option value="M" <%= user.sexo_paciente === 'M' ? 'selected' : '' %>>M</option>
+                                        <option value="F" <%= user.sexo_paciente === 'F' ? 'selected' : '' %>>F</option>
         
                                       </select>
                                 </div>
 
                                 <div class="wrapper">
                                     <label for="age">Idade</label>
-                                    <input type="text" name="age" id="age"/>
+                                    <input type="text" name="age" id="age" value="<%= user.idade_paciente %>"/>
                                 </div>
 
                                 <div class="wrapper">
                                     <label for="email">E-mail</label>
-                                     <input type="email" name="email" id="email"/>
+                                     <input type="email" name="email" id="email" value="<%= user.email_paciente %>"/>
 
                                 </div>
                                 
 
                                 <div class="wrapper">
                                     <label for="phone">Celular</label>
-                                    <input type="text" name="phone" id="phone"/>
+                                    <input type="text" name="phone" id="phone" value="<%= user.tel_paciente %>"/>
                                 </div>
                               
 
@@ -179,38 +178,8 @@
 
                         </fieldset>
 
-                        <fieldset>
-
-                            <div class="fieldset-wrapper">
-                                <legend>Exames</legend>
-                            </div>
-
-                            <label for="exame">Exame 01</label>
-                            <select name="exame" id="">
-                                <option value=""></option>
-                                <option value="HEMO">Hemograma</option>
-                                <option value="GLI">Glicose</option>
-
-                            </select>
-
-
-                            <label for="exame">Exame 02</label>
-                            <select name="exame2" id="">
-
-                                <option value=""></option>
-                                <option value="HEMO">Hemograma</option>
-                                <option value="GLI">Glicose</option>
-
-                            </select>
-
-                           
-
-    
-                         
-                        </fieldset>
-
                         
-                        <button type="submit" id="userReg">Cadastrar Paciente</button>
+                        <button type="submit" id="userReg">Atualizar Dados</button>
                     </form>
 
                 </section>

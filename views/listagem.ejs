@@ -33,31 +33,31 @@
     
             <nav>
                 <ul>
-                    <a href="">
+                    <a href="/listUsers">
                         <li>
-                            <img src="svg/Vector.svg" alt="ícone">
-                            Home
+                            <img src="/svg/Vector.svg" alt="ícone">
+                            Pacientes
                         </li>
                     </a>
                     
-                    <a href="./cadastraUser.html">
+                    <a href="/create">
                         <li style="--delay:0.4s">
-                            <img src="svg/Vector.svg" alt="ícone">
-                            Cadastrar usuário
+                            <img src="/svg/Vector.svg" alt="ícone">
+                            Cadastrar Paciente
                         </li>
                     </a>
                     
-                    <a href="">
+                    <a href="/createExame">
                         <li style="--delay:0.6s">
-                            <img src="svg/Vector.svg" alt="ícone">
+                            <img src="/svg/Vector.svg" alt="ícone">
                             Cadastrar Exame
                         
                         </li>
                     </a>
                     
-                    <a href="">
+                    <a href="/report">
                         <li style="--delay:0.8s">
-                            <img src="svg/Vector.svg" alt="ícone
+                            <img src="/svg/Vector.svg" alt="ícone
                             ">
                             Exibir relatório
                         </li>
@@ -69,7 +69,7 @@
                         
                         Log out
  
-                         <img src="svg/Vector.svg" alt="ícone
+                         <img src="/svg/Vector.svg" alt="ícone
                          ">
                      </li></a>
                     
@@ -96,7 +96,7 @@
     
                 <div class="search-input">
     
-                    <label for="search">Search</label>
+                    <label for="search">Pesquisar</label>
                     <input type="text" name="search" id="search" placeholder="Search">
     
                     <img src="/svg/bell.svg" alt="Icone de sininho">
@@ -117,11 +117,11 @@
             <section class="user-form">
     
                 <div class="title-user-form">
-                    <h2>Lista de usuários</h2>
+                    <h2>Lista de Pacientes</h2>
 
                     <a href="/create">
                         <button id="addUser">
-                            Add new user
+                            Cadastrar Paciente
                         </button>
     
                     </a>
@@ -147,21 +147,24 @@
                                 <th>Nome</th>
                                 <th>Sexo</th>
                                 <th>Email</th>
-                                <th>Id do Atendimento</th>
+                                
+                                <th>Id atend</th>
+                                
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
+                        
                             <% userList.forEach((user) => { %>
                                 <tr>
-                                    <td><img class="user-image" src="https://randomuser.me/api/portraits/men/11.jpg" alt="Imagem do usuário"></td>
+                                    <td><img class="user-image" src="https://randomuser.me/api/portraits/women/21.jpg" alt="Imagem do usuário"></td>
                                     <td><%= user.nome_paciente %></td>
                                     <td><%= user.sexo_paciente %></td>
                                     <td><%= user.email_paciente %></td>
                                     <td><%= user.numero_atendimento %></td>
                                     <td>
                                         <div class="crud-icons">
-                                            <span class="edit-icon" onclick="editRow()">✏️</span>
+                                           <a href="/updateUser/<%= user.id_paciente %>"> <span class="edit-icon" onclick="editRow()">✏️</span></a>
                                             <span class="delete-icon" onclick="deleteRow()">❌</span>
                                         </div>
                                     </td>

@@ -22,6 +22,10 @@ const insertUser = async (request, response)=>{
     // console.log(`O request.body aqui ${request.body}`)
     try{
 
+        if(user.exame == "" && user.exame2 == ""){
+            return response.status(400).send('É necessário cadastrar ao menos um exame.');
+        }
+
         if (user.exame === user.exame2) {
             return response.status(400).send('Os exames selecionados são iguais. Selecione exames diferentes.');
         }
@@ -42,10 +46,50 @@ const insertUser = async (request, response)=>{
     }
 }
 
+
+const renderEditUserForm = async (request, response)=>{
+
+    try{
+        const userId = request.params.id_paciente
+        // console.log(userId)
+        const userArray = await userModel.obterUserById(userId)
+
+        const user = userArray[0]
+
+        // console.log("Usuário retornado com sucesso!")
+        // console.log(user)
+        console.log(user.id_paciente)
+        return response.render("editaUser", {user})
+       
+
+    }catch(error){
+        console.log("Usuário não encontrado!")
+    }
+}   
+
+const updateUser = async (request, response) =>{
+
+   
+    try{
+        const userId = request.params.id_paciente;
+        console.log("Id do user" + userId)
+
+        const user = request.body;
+
+        await userModel.atualizarDados(userId, user)
+
+        response.redirect("/listUsers");
+
+    }catch(error){
+
+        return response.status(500).send("Não foi possível realizar a atualização.");
+    }
+}
+
 const listUser = async (request, response) =>{
     
     try{
-
+        
         const userList = await userModel.listarDados();
         console.log(userList)
         
@@ -69,4 +113,7 @@ module.exports = {
     renderUser,
     insertUser,
     listUser,
+    renderEditUserForm,
+    updateUser,
+    
 }

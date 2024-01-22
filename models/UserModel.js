@@ -61,8 +61,52 @@ const inserirDados = async (user, serviceNumber) =>{
 }
 
 
+//Obter usuário inserido
+const obterUserById = async (userId) =>{
 
-const listarDados = async (request, response) =>{
+    try{
+
+        const connection = await db.connectionToDb()
+        const values = [userId]
+
+        //Consultei dessa forma pois a coluna exame_paciente me retorna um array. Por esse motivo, não estava sendo possivel retornar um json.
+        const result = await connection.query('SELECT id_paciente, nome_paciente, sexo_paciente, idade_paciente, email_paciente, tel_paciente, numero_atendimento FROM pacientes WHERE id_paciente = ?', values)
+
+        return result[0]
+        
+    }catch(error){
+        console.log(`Não foi possivel buscar o usuário: ${error.message}`)
+         throw error
+    }
+   
+}
+
+
+
+//Atualizar usuário
+const atualizarDados = async (userId, user) =>{
+    
+    try{
+        const connection = await db.connectionToDb();
+
+        const values = [user.name, user.sexo, user.age, user.email, user.phone, userId]
+
+        await connection.query('UPDATE pacientes SET nome_paciente= ?, sexo_paciente= ?, idade_paciente= ?, email_paciente= ?, tel_paciente=? WHERE id_paciente= ? ', values);
+
+        console.log("Paciente atualizado com sucesso") 
+        
+        
+    }catch(error){
+        console.log("Não foi possivel atualizar o paciente!" + error.message)
+        throw error
+    }
+   
+}
+
+
+
+//listar dados do usuário
+const listarDados = async () =>{
     const connection = await db.connectionToDb()
 
     try{
@@ -82,7 +126,8 @@ module.exports = {
    
     inserirDados,
     listarDados,
-   
-    
+    obterUserById,
+    atualizarDados,
+     
 }
 

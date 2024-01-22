@@ -86,10 +86,33 @@ const updateUser = async (request, response) =>{
     }
 }
 
+const deleteUser = async (request, response) =>{
+
+     try{
+
+        const userId = request.params.id_paciente;
+
+        await userModel.apagarUser(userId)
+
+        return response.redirect("/listUsers")
+
+
+    }catch(error){
+        console.log("Erro ao apagar usuário: " + error.message)
+        return response.status(500).send("Não foi possível realizar a atualização.");
+
+     }
+
+}
+
+    
+
+
+
 const listUser = async (request, response) =>{
     
     try{
-        
+
         const userList = await userModel.listarDados();
         console.log(userList)
         
@@ -115,5 +138,6 @@ module.exports = {
     listUser,
     renderEditUserForm,
     updateUser,
+    deleteUser,
     
 }

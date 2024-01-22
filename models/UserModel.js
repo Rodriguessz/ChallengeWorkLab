@@ -1,4 +1,5 @@
 
+const { response } = require("express");
 const db = require("../database/db")
 
 
@@ -82,7 +83,6 @@ const obterUserById = async (userId) =>{
 }
 
 
-
 //Atualizar usuário
 const atualizarDados = async (userId, user) =>{
     
@@ -101,6 +101,25 @@ const atualizarDados = async (userId, user) =>{
         throw error
     }
    
+}
+
+//Deletar usuário
+
+const apagarUser = async (userId) =>{
+
+    try{
+        const value = [userId]
+        const connection = await db.connectionToDb();
+
+        await connection.query("DELETE FROM pacientes WHERE id_paciente = ?", value);
+
+        console.log("Usuário deletado com sucesso!")
+
+    } catch(error){
+
+        console.log("Falha ao deletar usuário!" + error.message)
+        throw error
+    }
 }
 
 
@@ -128,6 +147,7 @@ module.exports = {
     listarDados,
     obterUserById,
     atualizarDados,
+    apagarUser,
      
 }
 

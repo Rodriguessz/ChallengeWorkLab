@@ -360,9 +360,23 @@ div.crud-icons{
    gap: 2rem;
 }
 
+a#edit-icon{
+   text-decoration: none;
+}
+
+
 .edit-icon, .delete-icon {
    cursor: pointer;
    margin-right: 5px;
+   width: 2.6rem;
+   height: 2.6rem;
+   color: var(--adm-font-color);
+   transition: 0.5s ease-in;
+}
+
+.edit-icon:hover, .delete-icon:hover {
+   color: #08485c;
+
 }
 
 

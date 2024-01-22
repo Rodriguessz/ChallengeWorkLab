@@ -14,6 +14,8 @@ routes.get("/listUsers", userController.listUser)
 routes.get("/updateUser/:id_paciente", userController.renderEditUserForm);
 routes.post("/updateUser/:id_paciente", userController.updateUser)
 
+routes.post("/deleteUser/:id_paciente", userController.deleteUser)
+
 
 //Exportando meu módulo de rotas
 

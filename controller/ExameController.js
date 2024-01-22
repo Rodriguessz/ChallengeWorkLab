@@ -37,6 +37,24 @@ const insertExames = async (request, response) =>{
 
 }
 
+const getAllExames = async (request, response) =>{
+
+    try{    
+
+        
+        const result = await exameModel.getAllExames()
+    
+        return response.json(result)
+
+    }catch(error){
+        console.log("Erro ao retornar exames" + error.message)
+        return  response.status(500).send('Erro ao retornar exames!.')
+    }
+   
+
+
+}
+
 
 
 
@@ -46,6 +64,7 @@ const insertExames = async (request, response) =>{
 module.exports = {
     renderCreateExame,
     insertExames,
+    getAllExames,
 }
 
 

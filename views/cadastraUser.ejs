@@ -180,26 +180,28 @@
                         </fieldset>
 
                         <fieldset>
-
+                            
                             <div class="fieldset-wrapper">
                                 <legend>Exames</legend>
                             </div>
 
                             <label for="exame">Exame 01</label>
                             <select name="exame" id="exame1">
-                                <option value=""></option>
-                                <option value="HEMO">Hemograma</option>
-                                <option value="GLI">Glicose</option>
+                                <% exames.forEach((exames) => { %>
+                                    <option value="<%= exames.code%>"><%= exames.desc_exame%></option>
+                                    <% }); %>
+                                
+                               
 
                             </select>
 
 
                             <label for="exame">Exame 02</label>
                             <select name="exame2" id="exame2">
-
                                 <option value=""></option>
-                                <option value="HEMO">Hemograma</option>
-                                <option value="GLI">Glicose</option>
+                                <% exames.forEach((exames) => { %>
+                                    <option value="<%= exames.code%>"><%= exames.desc_exame%></option>
+                                    <% }); %>
 
                             </select>
 

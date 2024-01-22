@@ -1,10 +1,15 @@
 
 
 const userModel = require("../models/UserModel")
+const ExameModel = require("../models/ExameModel")
+
 
 const renderUser = async (request, response)=>{
     try{
-        return response.render("cadastraUser")
+        const exames = await ExameModel.getAllExames()
+        
+        return response.render("cadastraUser", {exames})
+
     }catch(error){
         console.log(error.message)
     }

@@ -50,6 +50,20 @@ const insertExames = async (exame) => {
 }
 
 
+const getAllExames = async () => {
+    try{
+        const connetion = await db.connectionToDb();
+
+        const result = await connetion.query("SELECT * FROM exames");
+        console.log("Exames retornados com sucesso!")
+        return result[0]
+
+    }catch(error){
+        console.log("Não foi possivel buscar os exames no banco de dados!")
+    }
+}
+
+
 
 
 
@@ -58,6 +72,7 @@ const insertExames = async (exame) => {
 
 module.exports = {
     insertExames,
+    getAllExames,
 }
 
 

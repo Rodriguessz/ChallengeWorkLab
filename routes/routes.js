@@ -25,6 +25,12 @@ routes.get("/createExame", ExameController.renderCreateExame)
 routes.post("/createExame", ExameController.insertExames)
 
 
+routes.get("/getExames", ExameController.getAllExames)
+
+
+
+
+
 
 
 

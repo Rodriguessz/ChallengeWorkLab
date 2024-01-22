@@ -4,6 +4,9 @@ const routes = require("express").Router()
 
 //Faz uma requisição para o nosso módulo UserController
 const userController = require("../controller/UserController")
+const ExameController = require("../controller/ExameController")
+
+
 
 
 routes.get("/create", userController.renderUser)
@@ -15,6 +18,15 @@ routes.get("/updateUser/:id_paciente", userController.renderEditUserForm);
 routes.post("/updateUser/:id_paciente", userController.updateUser)
 
 routes.post("/deleteUser/:id_paciente", userController.deleteUser)
+
+
+
+routes.get("/createExame", ExameController.renderCreateExame)
+routes.post("/createExame", ExameController.insertExames)
+
+
+
+
 
 
 //Exportando meu módulo de rotas

@@ -2,8 +2,6 @@
 
 const userModel = require("../models/UserModel")
 
-
-
 const renderUser = async (request, response)=>{
     try{
         return response.render("cadastraUser")
@@ -106,9 +104,6 @@ const deleteUser = async (request, response) =>{
 }
 
     
-
-
-
 const listUser = async (request, response) =>{
     
     try{
@@ -124,6 +119,9 @@ const listUser = async (request, response) =>{
         throw error
     }
 }
+
+
+
 
 
 

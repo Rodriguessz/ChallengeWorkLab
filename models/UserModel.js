@@ -1,5 +1,4 @@
 
-const { response } = require("express");
 const db = require("../database/db")
 
 
@@ -33,7 +32,6 @@ const createTable = async () =>{
 }
 
 createTable()
-
 
 
 //Inserir dados no BD

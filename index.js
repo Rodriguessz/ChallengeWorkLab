@@ -8,13 +8,14 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 
+
 //Fazendo a requisição para o meu módulo de rotas
 
 const routes = require("./routes/routes");
 
 //Responsável pelo direcionamento das pastas
 const path = require("path");
-const exp = require("constants");
+
 
 
 

@@ -17,7 +17,7 @@ const createExams = async () =>{
             CREATE TABLE IF NOT EXISTS exames (
             code VARCHAR(5) PRIMARY KEY,
             desc_exame VARCHAR(255) NOT NULL,
-            valor_exame VARCHAR(10)
+            valor_exame DECIMAL(10,2)
     )
     
 `)

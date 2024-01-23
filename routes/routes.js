@@ -24,11 +24,23 @@ routes.post("/deleteUser/:id_paciente", userController.deleteUser)
 routes.get("/createExame", ExameController.renderCreateExame)
 routes.post("/createExame", ExameController.insertExames)
 
+routes.get("/updateExame/:id_exame", ExameController.renderEditExamForm)
+routes.post("/updateExame/:id_exame", ExameController.updateExame)
+
+
+routes.post("/deleteExame/:id_exame",ExameController.deleteExame)
+
+
+
+
+
 
 routes.get("/listExames", ExameController.getAllExames)
 
 
-routes.get("/updateExame/:id_exame", ExameController.getExameById)
+
+
+
 
 
 

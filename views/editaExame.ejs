@@ -123,7 +123,7 @@
             <section class="user-form">
     
                 <div class="title-user-form">
-                    <h2>Atualização de Paciente</h2>
+                    <h2>Atualização de Exame</h2>
 
                  
                   
@@ -135,21 +135,23 @@
                 </div>
 
 
-                <% exame %>
+              
                 <section class="list-users">
-
-                    <form action="" method="post" id="userRegister">
+                    <% exame %>
+                  
+                    <form action="/updateExame/<%= exame.id_exame%>" method="post" id="userRegister"> 
+                       
 
                         <fieldset>
                             <div class="fieldset-wrapper">
-                                <legend>Exame: <%= exame.desc_exame %> </legend>
+                                <legend>Exame: <%= exame.desc_exame%></legend>
                             </div>
 
                             <div class="input-wrapper">
 
 
                                 <div class="wrapper">
-                                    <label for="name">Códico do Exame</label>
+                                    <label for="name">Código do Exame</label>
                                     <input type="text" name="codeExame" id="codeExame"  value="<%= exame.code %>"/>
                                 </div>
 

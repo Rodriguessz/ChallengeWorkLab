@@ -87,7 +87,7 @@ const atualizarDados = async (userId, user) =>{
     try{
         const connection = await db.connectionToDb();
 
-        const values = [user.name, user.sexo, user.age, user.email, user.phone, userId]
+         const values = [user.name, user.sexo, user.age, user.email, user.phone, userId]  
 
         await connection.query('UPDATE pacientes SET nome_paciente= ?, sexo_paciente= ?, idade_paciente= ?, email_paciente= ?, tel_paciente=? WHERE id_paciente= ? ', values);
 

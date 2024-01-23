@@ -73,6 +73,9 @@ const getExameById = async (exameId) =>{
 
         const result = await connection.query('SELECT * FROM exames WHERE id_exame = ?', value)
 
+
+     
+
         console.log("Exame retornado com sucesso!")
         
         return result[0]
@@ -84,15 +87,48 @@ const getExameById = async (exameId) =>{
     }
 }
 
-const updateExame = async (exameId, exame) =>{
+//Atualizar usuário
+const atualizarDados = async (exameId, exame) =>{
+    
     try{
+        const connection = await db.connectionToDb();
 
-       
+         const values = [exame.codeExame, exame.descExame, exame.valorExame, exameId]  
 
+        await connection.query('UPDATE exames SET code= ?, desc_exame= ?, valor_exame= ? WHERE id_exame= ?', values);
+
+        console.log("Exame atualizado com sucesso") 
+        
+        
     }catch(error){
-       
+        console.log("Não foi possivel atualizar o Exame!" + error.message)
+        throw error
+    }
+   
+}
+
+
+const apagarExame = async (exameId) =>{
+
+    try{
+        
+        const connection = await db.connectionToDb();
+        const value = [exameId]
+
+        await connection.query("DELETE FROM exames WHERE id_exame = ?", value);
+
+        console.log("Exame deletado com sucesso!")
+
+    } catch(error){
+
+        console.log("Falha ao deletar exame!" + error.message)
+        throw error
     }
 }
+
+
+
+
 
 
 
@@ -105,6 +141,9 @@ module.exports = {
     insertExames,
     getAllExames,
     getExameById,
+    atualizarDados,
+    apagarExame,
+   
 }
 
 

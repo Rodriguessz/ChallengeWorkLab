@@ -20,7 +20,7 @@
             <h1>CRUD WORKLAB</h1>
            
 
-        <form action="/create" method="post">
+        <form action="/listUsers" method="get">
 
             <fieldset class="login-fieldset">
 
@@ -35,13 +35,13 @@
 
                     <div class="input-wrapper">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="E-mail"/>
+                        <input type="email" name="email" id="email" placeholder="E-mail" required/>
                     </div>
 
 
                 <div class="input-wrapper">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Enter your password"/>
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required minlength="3"/>
                 </div>
 
 

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Worlab</title>
+
+    <style>
+                :root{
+
+            /* Preset font styles */
+
+           
+            font-family: "Montserrat", Arial, Helvetica, sans-serif;
+
+            /* CSS variables */
+
+            --main-bg-color: #f8f8f8;
+            --main-lg-card-bg-color: #fff;
+            --main-lg-font-color: #000;
+            --main-label-color: #6C6C6C;
+            --main-inp-stroke-color: #E5E5E5;
+            --main-plcholder-color: #CDCDCD;
+            --main-bg-btn:linear-gradient(to right, #337ab7, #2983bd, #1e8bc3, #1194c8, #009ccc);
+            --main-bg-aside: #F2EAE1;
+            --adm-font-color: #009ccc;
+            --tb-font-color: #ACACAC;
+
+
+
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f7f7f7;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            width: 100vw;
+            justify-content: center;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        h1, h2 {
+            color: #009ccc;
+        }
+
+        p {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para a seção de exames */
+        #exames-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 150px;
+            width: 50%;
+        }
+
+
+        button{
+
+            margin-top: 3rem;
+
+         padding: 1.6rem 8rem;
+
+        border-radius: 0.6rem;
+        border: none;
+
+        background-image: var(--main-bg-btn);
+
+        font-weight: 600;
+        color: var(--main-lg-card-bg-color);
+
+        cursor: pointer;
+
+        transition: filter 1s;
+
+        font-size: 14px;
+
+}
+
+button:hover{
+
+   filter: grayscale(40%);
+
+}
+
+    </style>
+</head>
+<body>
+    <div id="exames-section">
+    <h1>Report por Usuário</h1>
+
+    <p>ID do paciente: <%= user.id_paciente %> </p>
+    <p>Número do atendimento: <%= user.numero_atendimento %> </p>
+    <p>Nome do paciente: <%= user.nome_paciente %> </p>
+    <p>Sexo do paciente: <%= user.sexo_paciente %> </p>
+    <p>Idade do paciente: <%= user.idade_paciente %> </p>
+    <p>Email do paciente: <%= user.email_paciente %> </p>
+    <p>Celular do paciente: <%= user.tel_paciente %> </p>
+
+
+        <h2>Exames do paciente</h2>
+        <ul>
+            <% user.exame_paciente.forEach(function(exame) { %>
+                <li>
+                    <% if (exame.exame !== '') { %>
+                        <p>Código do exame: <%= exame.exame %> </p>
+                    <% } %>
+                    <!-- Adicione mais propriedades conforme necessário -->
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+
+   <a href="/listUsers"><button>Voltar</button></a> 
+
+</body>
+</html>

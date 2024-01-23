@@ -3,6 +3,18 @@
 const userModel = require("../models/UserModel")
 const ExameModel = require("../models/ExameModel")
 
+const renderHomePage = async (request, response) =>{
+
+    try{
+
+        console.log('Tabela de pacientes criada com sucesso.');
+        return response.render("index")
+        
+    }catch(error){
+        console.log(`Não foi possivel carragar a página ${error.message}`)
+    }
+}
+
 
 const renderUser = async (request, response)=>{
     try{
@@ -24,7 +36,9 @@ const insertUser = async (request, response)=>{
     // return response.json({name: typeof user})
     // console.log(`O request.body aqui ${request.body}`)
     try{
-
+        if(!user.exame &&  !user.exame2){
+            return response.status(400).send('É necessário cadastrar um exame no sistema!');
+        }
         if(user.exame == "" && user.exame2 == ""){
             return response.status(400).send('É necessário cadastrar ao menos um exame.');
         }
@@ -125,6 +139,25 @@ const listUser = async (request, response) =>{
     }
 }
 
+//Dava pra reutilizar code, mas por organização achei melhor!
+const reportUser = async (request, response) =>{
+    
+    try{    
+        const userId = request.params.id_paciente;
+
+        const userArray = await userModel.reportById(userId)
+
+        const user = userArray[0]
+        console.log(user)
+
+
+        return response.render("reportUser", {user})
+    }catch(error){
+        response.status(500).send('Erro ao retornar paciente');
+        throw error
+    }
+}
+
 
 
 
@@ -136,11 +169,13 @@ const listUser = async (request, response) =>{
 //Exportando os métodos 
 
 module.exports = {
+    renderHomePage,
     renderUser,
     insertUser,
     listUser,
     renderEditUserForm,
     updateUser,
     deleteUser,
+    reportUser,
     
 }

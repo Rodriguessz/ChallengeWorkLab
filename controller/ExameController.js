@@ -119,6 +119,12 @@ const getAllExames = async (request, response) =>{
 
 
 
+
+
+
+
+
+
 module.exports = {
     renderCreateExame,
     insertExames,

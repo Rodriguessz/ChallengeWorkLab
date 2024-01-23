@@ -1,6 +1,8 @@
 
 const db = require("../database/db")
 
+//Renderiza a primeira página  (/)
+
 
 //Cria a tabela de pacientes
 
@@ -36,28 +38,29 @@ createTable()
 
 //Inserir dados no BD
 
-const inserirDados = async (user, serviceNumber) =>{
-    
-    try{
-        const exames = [{
-            exame: user.exame
-        }, {
-            exame: user.exame2
-        }]
-
-
-    
-        const connection = await db.connectionToDb();
-        const jsonExames =  JSON.stringify(exames)
-        const values = [user.name, user.sexo, user.age, user.email, jsonExames, user.phone, serviceNumber]
-        await connection.query('INSERT INTO pacientes (nome_paciente, sexo_paciente, idade_paciente, email_paciente, exame_paciente, tel_paciente, numero_atendimento) VALUES (?,?,?,?,?,?,?)', values); 
+    const inserirDados = async (user, serviceNumber) =>{
         
-    }catch(error){
-        console.error('Erro ao inserir dados no banco de dados:', error.message);
-        throw new Error('Erro ao inserir dados no banco de dados.');
+        try{
+            const exames = [{
+                exame: user.exame,
+                
+            }, {
+                exame: user.exame2
+            }]
+
+
+        
+            const connection = await db.connectionToDb();
+            const jsonExames =  JSON.stringify(exames)
+            const values = [user.name, user.sexo, user.age, user.email, jsonExames, user.phone, serviceNumber]
+            await connection.query('INSERT INTO pacientes (nome_paciente, sexo_paciente, idade_paciente, email_paciente, exame_paciente, tel_paciente, numero_atendimento) VALUES (?,?,?,?,?,?,?)', values); 
+            
+        }catch(error){
+            console.error('Erro ao inserir dados no banco de dados:', error.message);
+            throw new Error('Erro ao inserir dados no banco de dados.');
+        }
+        
     }
-    
-}
 
 
 //Obter usuário inserido
@@ -137,15 +140,37 @@ const listarDados = async () =>{
 }
 
 
+const reportById = async (userId) =>{
+    
+    try{
+
+        const connection = await db.connectionToDb()
+        const values = [userId]
+
+        //Consultei dessa forma pois a coluna exame_paciente me retorna um array. Por esse motivo, não estava sendo possivel retornar um json.
+        const result = await connection.query('SELECT * FROM pacientes WHERE id_paciente = ?', values)
+
+        return result[0]
+        
+    }catch(error){
+        console.log(`Não foi possivel buscar o usuário: ${error.message}`)
+         throw error
+    }
+}
+
+
+
+
+
 
 
 module.exports = {
-   
     inserirDados,
     listarDados,
     obterUserById,
     atualizarDados,
     apagarUser,
+    reportById,
      
 }
 

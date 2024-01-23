@@ -9,7 +9,7 @@ Esse projeto foi desenvolvido utilizando as tecnologias Express.js e o banco de 
 
 Para iniciar, é necessário fazer um clone do repositório em sua máquina. Caso ainda não tenha clonado o repositório, utilize o seguinte comando:
 
-` git clone https://github.com/seu-usuario/nome-do-repo.git` 
+` git clone https://github.com/Rodriguessz/ChallengeWorkLab.git` 
 
 
 ## Instalando as dependências 

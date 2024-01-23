@@ -135,50 +135,38 @@
                 </div>
 
 
-                <% user %>
+                <% exame %>
                 <section class="list-users">
 
-                    <form action="/updateUser/<%= user.id_paciente %>" method="post" id="userRegister">
+                    <form action="" method="post" id="userRegister">
 
                         <fieldset>
                             <div class="fieldset-wrapper">
-                                <legend>Paciente: <%= user.nome_paciente %> </legend>
+                                <legend>Exame: <%= exame.desc_exame %> </legend>
                             </div>
 
                             <div class="input-wrapper">
 
 
                                 <div class="wrapper">
-                                    <label for="name">Nome</label>
-                                    <input type="text" name="name" id="nome"  value="<%= user.nome_paciente %>"/>
+                                    <label for="name">Códico do Exame</label>
+                                    <input type="text" name="codeExame" id="codeExame"  value="<%= exame.code %>"/>
+                                </div>
+
+                            
+                                <div class="wrapper">
+                                    <label for="age">Descrição do Exame</label>
+                                    <input type="text" name="descExame" id="descExame" value=" <%= exame.desc_exame %>"/>
                                 </div>
 
                                 <div class="wrapper">
-                                    <label for="sexo">Sexo</label>
-                                    <select name="sexo" id="">
-                                        <!-- Se o valor retornado do BD for M, seleciona o value=M. Se o valor for F, seleciona o value=F -->
-                                        <option value="M" <%= user.sexo_paciente === 'M' ? 'selected' : '' %>>M</option>
-                                        <option value="F" <%= user.sexo_paciente === 'F' ? 'selected' : '' %>>F</option>
-        
-                                      </select>
-                                </div>
-
-                                <div class="wrapper">
-                                    <label for="age">Idade</label>
-                                    <input type="text" name="age" id="age" value="<%= user.idade_paciente %>"/>
-                                </div>
-
-                                <div class="wrapper">
-                                    <label for="email">E-mail</label>
-                                     <input type="email" name="email" id="email" value="<%= user.email_paciente %>"/>
+                                    <label for="valorExmae">Valor do Exame</label>
+                                     <input type="text" name="valorExame" id="valorExame" value=" <%= exame.valor_exame %>"/>
 
                                 </div>
                                 
 
-                                <div class="wrapper">
-                                    <label for="phone">Celular</label>
-                                    <input type="text" name="phone" id="phone" value="<%= user.tel_paciente %>"/>
-                                </div>
+                              
                               
 
 

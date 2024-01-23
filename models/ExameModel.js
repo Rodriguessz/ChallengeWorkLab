@@ -13,13 +13,15 @@ const createExams = async () =>{
         const connection = await db.connectionToDb();
 
         await connection.query(  `
-        
+            
             CREATE TABLE IF NOT EXISTS exames (
-            code VARCHAR(5) PRIMARY KEY,
+            id_exame INT AUTO_INCREMENT PRIMARY KEY,
+            code VARCHAR(5) UNIQUE NOT NULL,
             desc_exame VARCHAR(255) NOT NULL,
             valor_exame DECIMAL(10,2)
+            
     )
-    
+
 `)
 
     console.log("Tabela de Exames criada com sucesso!")
@@ -63,6 +65,35 @@ const getAllExames = async () => {
     }
 }
 
+const getExameById = async (exameId) =>{
+    try{
+
+        const connection = await db.connectionToDb();
+        const value = [exameId];
+
+        const result = await connection.query('SELECT * FROM exames WHERE id_exame = ?', value)
+
+        console.log("Exame retornado com sucesso!")
+        
+        return result[0]
+        
+
+    }catch(error){
+        console.log("Não foi possivel retornar o exame! " + error.message)
+        throw error.message
+    }
+}
+
+const updateExame = async (exameId, exame) =>{
+    try{
+
+       
+
+    }catch(error){
+       
+    }
+}
+
 
 
 
@@ -73,6 +104,7 @@ const getAllExames = async () => {
 module.exports = {
     insertExames,
     getAllExames,
+    getExameById,
 }
 
 

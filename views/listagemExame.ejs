@@ -6,11 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Worlab - Dev Challenge</title>
-    <link rel="stylesheet" href="/css/cadastraUser.css">
+    <link rel="stylesheet" href="css/listagemExame.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="./main.js" defer></script>
 
-    
 </head>
 <body>
     <div id="page">
@@ -37,15 +35,16 @@
                         <li>
                             <img src="/svg/Vector.svg" alt="ícone">
                             Pacientes
-                            </li>
-                     </a>
+                        </li>
+                    </a>
                     
                     <a href="/create">
                         <li style="--delay:0.4s">
                             <img src="/svg/Vector.svg" alt="ícone">
-                            Cadastrar paciente
+                            Cadastrar Paciente
                         </li>
                     </a>
+
 
                     <a href="/listExames">
                         <li style="--delay:0.6s">
@@ -63,7 +62,7 @@
                         </li>
                     </a>
                     
-                    <a href="/reports">
+                    <a href="/report">
                         <li style="--delay:0.8s">
                             <img src="/svg/Vector.svg" alt="ícone
                             ">
@@ -104,7 +103,7 @@
     
                 <div class="search-input">
     
-                    <label for="search">Search</label>
+                    <label for="search">Pesquisar</label>
                     <input type="text" name="search" id="search" placeholder="Search">
     
                     <img src="/svg/bell.svg" alt="Icone de sininho">
@@ -117,15 +116,23 @@
             </section>
     
     
-        
+            <section class="home">
+    
+            </section>
     
     
             <section class="user-form">
     
                 <div class="title-user-form">
-                    <h2>Atualização de Paciente</h2>
+                    <h2>Lista de Exames</h2>
 
-                 
+                    <a href="/createExame">
+                        <button id="addUser">
+                            Cadastrar Exame
+                        </button>
+    
+                    </a>
+                   
                   
                    
                 </div>
@@ -135,60 +142,46 @@
                 </div>
 
 
-                <% user %>
+
                 <section class="list-users">
 
-                    <form action="/updateUser/<%= user.id_paciente %>" method="post" id="userRegister">
 
-                        <fieldset>
-                            <div class="fieldset-wrapper">
-                                <legend>Paciente: <%= user.nome_paciente %> </legend>
-                            </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="photo">Foto</th>
 
-                            <div class="input-wrapper">
+                                <th>Código do exame</th>
+                                <th>Descrição</th>
+                                <th>Valor do Exame</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                    
+                            <% exames.forEach((exames)=> { %>
+                                <tr>
+                                    <td><img class="user-image" src="svg/teste-de-sangue.png" alt="Imagem do usuário"></td>
+                                    <td><%= exames.code %></td>
+                                    <td><%= exames.desc_exame %></td>
+                                    <td><%= exames.valor_exame %></td>
+                                    <td>
+                                        <div class="crud-icons">
+                                           <a href="/updateExame/<%= exames.id_exame %>" id="edit-icon"> <ion-icon class="edit-icon" name="create-outline"></ion-icon></a>
+                                            <button style="border: none;background: none;" type="submit" form="teste"><ion-icon class="delete-icon" name="trash-outline"></ion-icon></a></button>
+                                        </div>
+                                    </td>
+                                </tr>
 
-
-                                <div class="wrapper">
-                                    <label for="name">Nome</label>
-                                    <input type="text" name="name" id="nome"  value="<%= user.nome_paciente %>"/>
-                                </div>
-
-                                <div class="wrapper">
-                                    <label for="sexo">Sexo</label>
-                                    <select name="sexo" id="">
-                                        <!-- Se o valor retornado do BD for M, seleciona o value=M. Se o valor for F, seleciona o value=F -->
-                                        <option value="M" <%= user.sexo_paciente === 'M' ? 'selected' : '' %>>M</option>
-                                        <option value="F" <%= user.sexo_paciente === 'F' ? 'selected' : '' %>>F</option>
-        
-                                      </select>
-                                </div>
-
-                                <div class="wrapper">
-                                    <label for="age">Idade</label>
-                                    <input type="text" name="age" id="age" value="<%= user.idade_paciente %>"/>
-                                </div>
-
-                                <div class="wrapper">
-                                    <label for="email">E-mail</label>
-                                     <input type="email" name="email" id="email" value="<%= user.email_paciente %>"/>
-
-                                </div>
-                                
-
-                                <div class="wrapper">
-                                    <label for="phone">Celular</label>
-                                    <input type="text" name="phone" id="phone" value="<%= user.tel_paciente %>"/>
-                                </div>
+                                <!-- Precisei colocar esse formulário pois o método da ação delete é um post e por padrão o HREF é um GET -->
+                                <form action="" id="teste" method="post"></form>
+                            <% }); %>
+                            
                               
-
-
-                            </div>
-
-                        </fieldset>
-
-                        
-                        <button type="submit" id="userReg">Atualizar Dados</button>
-                    </form>
+                          
+                            <!-- Adicione mais linhas conforme necessário -->
+                        </tbody>
+                    </table>
 
                 </section>
 
@@ -203,6 +196,7 @@
 
     </div>
    
-
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

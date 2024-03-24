@@ -1,4 +1,4 @@
-## Projeto CRUD - WORKLAB
+## Projeto- WORKLAB
 
 Esse projeto foi desenvolvido utilizando as tecnologias Express.js e o banco de dados MySql.
 

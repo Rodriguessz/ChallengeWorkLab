@@ -1,7 +1,6 @@
 # WorkGest
 
 ![Badge de status do projeto](https://img.shields.io/badge/status-completo-brightgreen)
-![Badge de licença](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Projeto desenvolvido com Express.js e MySQL, para o desafio da empresa Worklab. Esse projeto tinha como objetivo criar um sistema de gestão laboratorial, onde exames eram cadastrados e vinculados a atendimentos e geração de relatórios.
 
